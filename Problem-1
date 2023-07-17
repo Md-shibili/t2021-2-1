@@ -1,30 +1,39 @@
-def add(P, Q):
-return P + Q   
-def subtract(P, Q): 
-return P - Q   
-def multiply(P, Q): 
-return P * Q   
-def divide(P, Q):
-return P / Q  
-print ("Please select the operation.")    
-print ("a. Add")    
-print ("b. Subtract")    
-print ("c. Multiply")    
-print ("d. Divide") 
-choice = input("Please enter choice (a/ b/ c/ d): ")    
+class Calculator:
+    def __init__(self, a, b):
+        self.a = float(a)
+        self.b = float(b)
     
-num_1 = int (input ("Please enter the first number: "))    
-num_2 = int (input ("Please enter the second number: "))    
+    def add(self):
+        return self.a + self.b
     
-if choice == 'a':    
-   print (num_1, " + ", num_2, " = ", add(num_1, num_2))    
+    def subtract(self):
+        return self.a - self.b
     
-elif choice == 'b':    
-   print (num_1, " - ", num_2, " = ", subtract(num_1, num_2))    
+    def multiply(self):
+        return self.a * self.b
     
-elif choice == 'c':    
-   print (num1, " * ", num2, " = ", multiply(num1, num2))    
-elif choice == 'd':    
-   print (num_1, " / ", num_2, " = ", divide(num_1, num_2))    
-else:    
-   print ("This is an invalid input")
+    def divide(self):
+        if self.b != 0:
+            return self.a / self.b
+        else:
+            return "Error: Division by zero is not allowed."
+
+# Example usage
+a = input("Enter the value of 'a': ")
+b = input("Enter the value of 'b': ")
+operation = input("Enter the type of operation (add/subtract/multiply/divide): ")
+
+calculator = Calculator(a, b)
+
+if operation == "add":
+    result = calculator.add()
+elif operation == "subtract":
+    result = calculator.subtract()
+elif operation == "multiply":
+    result = calculator.multiply()
+elif operation == "divide":
+    result = calculator.divide()
+else:
+    result = "Error: Invalid operation."
+
+print("Result:", result)
